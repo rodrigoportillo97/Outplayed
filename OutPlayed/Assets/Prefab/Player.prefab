@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 1308614347}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,7 +200,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1449846501}
   anim: {fileID: 6010956580435953210}
-  runSpeed: 35
+  fader: {fileID: 0}
+  runSpeed: 25
+  restartDelay: 1
+  respawnPoint: {x: 0, y: 0, z: 0}
 --- !u!114 &1449846501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a333e8387c8b5844e910386b2cded60e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 500
+  m_JumpForce: 550
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -250,13 +253,13 @@ CircleCollider2D:
   m_GameObject: {fileID: 611531041199476754}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: afafe2ad728b8ae499217535685a32c1, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0034845439, y: -0.065175354}
+  m_Offset: {x: 0.0013918321, y: -0.05320855}
   serializedVersion: 2
-  m_Radius: 0.09832492
+  m_Radius: 0.111613266
 --- !u!1 &1048188741696238175
 GameObject:
   m_ObjectHideFlags: 0
