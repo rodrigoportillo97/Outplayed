@@ -7,6 +7,11 @@ TagManager:
   - Ground
   - Floorlimit
   - CheckPoint
+  - Red
+  - Yellow
+  - Blue
+  - Green
+  - RedUP
   layers:
   - Default
   - TransparentFX
