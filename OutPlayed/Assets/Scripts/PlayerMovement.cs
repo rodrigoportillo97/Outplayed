@@ -13,10 +13,14 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     public float restartDelay = 1f;
     public Vector3 respawnPoint;
+    public Rigidbody2D rb;
+    public Vector2 m_NewForce;
 
     void Start()
     {
         respawnPoint = transform.position;
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        m_NewForce = new Vector2(0f, 1f);
     }
 
     // Update is called once per frame
@@ -42,17 +46,56 @@ public class PlayerMovement : MonoBehaviour
         jump = false;
     }
 
-    void OnTriggerEnter2D(Collider2D coll)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (coll.tag == "Floorlimit")
+        if (collision.tag == "Floorlimit")
         {
             transform.position = respawnPoint;
         }
-        else if (coll.tag == "CheckPoint")
+        else if (collision.tag == "CheckPoint")
         {
             respawnPoint = transform.position;
         }
 
+        if (collision.tag == "Yellow")
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
+        if (collision.tag == "Blue")
+        {
+            
+        }
+
+      
+
     }
 
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Yellow")
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+        if (collision.tag == "Blue")
+        {
+            
+        }
+    }
+
+    public void OnTriggerStay2D(Collider2D coll)
+    {
+        if (coll.tag == "Red")
+        {
+            m_NewForce = new Vector2(0f, 0.4f);
+            rb.AddForce(m_NewForce, ForceMode2D.Impulse);
+        }
+
+        if (coll.tag == "RedUP")
+        {
+            m_NewForce = new Vector2(0f, 0.5f);
+            rb.AddForce(m_NewForce, ForceMode2D.Impulse);
+        }
+    }
 }
