@@ -204,6 +204,10 @@ MonoBehaviour:
   runSpeed: 25
   restartDelay: 1
   respawnPoint: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
+  m_NewForce: {x: 0, y: 0}
+  normal_Mov: 1
+  blue_Mov: 0
 --- !u!114 &1449846501
 MonoBehaviour:
   m_ObjectHideFlags: 0
