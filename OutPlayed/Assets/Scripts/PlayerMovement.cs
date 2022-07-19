@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
     public Animator anim;
     public SceneFader fader;
+    
+
 
     float horizontalMove = 0f;
     public float runSpeed = 40f;
@@ -43,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
         {
             jump = true;
             anim.SetBool("isJumping", true);
+            
         }
     }
 
