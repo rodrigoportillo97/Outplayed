@@ -13,6 +13,7 @@ public class Mecanics : MonoBehaviour
     public Text deathCount2;
     private int deathcount = 0;
     public GameObject confettiEffect;
+    public AudioClip clip;
 
     private void Start()
     {
@@ -40,8 +41,9 @@ public class Mecanics : MonoBehaviour
         {
             respawnPoint = transform.position;
             GameObject go = Instantiate(confettiEffect);
+            GetComponent<AudioSource>().PlayOneShot(clip);
             Destroy(go, 2.5f);
-
+            
         }
 
         if (collision.tag == "Yellow")
