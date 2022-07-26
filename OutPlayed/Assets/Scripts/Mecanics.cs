@@ -10,27 +10,38 @@ public class Mecanics : MonoBehaviour
     public Vector2 m_NewForce;
     public Rigidbody2D rb;
     public Text deathCount;
-    public int deathcount = 0;
-
+    public Text deathCount2;
+    private int deathcount = 0;
+    public GameObject confettiEffect;
 
     private void Start()
     {
         respawnPoint = transform.position;
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
+
+    public void DeathIncreased() 
+    {
+        deathcount++;
+        deathCount.text = deathcount.ToString();
+        deathCount2.text = deathcount.ToString();
+    }
+
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Floorlimit")
         {
             transform.position = respawnPoint;
-            deathcount++;
-            deathCount.text = deathcount.ToString();
+            DeathIncreased();
             Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.name}");
-
         }
         else if (collision.tag == "CheckPoint")
         {
             respawnPoint = transform.position;
+            GameObject go = Instantiate(confettiEffect);
+            Destroy(go, 2.5f);
+
         }
 
         if (collision.tag == "Yellow")
