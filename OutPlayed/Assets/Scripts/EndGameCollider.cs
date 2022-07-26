@@ -16,6 +16,7 @@ public class EndGameCollider : MonoBehaviour
             audioS.Stop();
             GetComponent<AudioSource>().Play();
             endgameUI.SetActive(true);
+            Time.timeScale = 0;
             player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
 
         }
