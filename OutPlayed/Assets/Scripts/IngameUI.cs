@@ -1,17 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class IngameUI : MonoBehaviour
 {
     
     public static bool GamePaused = false;
     public GameObject pauseMenuUI;
     public SceneFader fader;
+    public Text txtTimer;
+    private float time;
+    private bool timerfinish = false;
+
+    void Start()
+    {
+        txtTimer.text = "00:00";
+        time = 0;
+    }
 
     void Update()
     {
-     
+        if (!timerfinish)
+        {
+            TimeCalculate();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GamePaused)
@@ -24,6 +37,15 @@ public class IngameUI : MonoBehaviour
             }
         }
     }
+
+    public void TimeCalculate()
+    {
+        time += Time.deltaTime;
+        int min = (int)time / 60;
+        int seg = (int)time % 60;
+        txtTimer.text = min.ToString() + ":" + seg.ToString().PadLeft(2, '0');
+    }
+
 
     public void Resume()
     {
