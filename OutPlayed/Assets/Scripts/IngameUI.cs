@@ -12,6 +12,7 @@ public class IngameUI : MonoBehaviour
     private float time;
     private bool timerfinish = false;
 
+
     void Start()
     {
         txtTimer.text = "00:00";
