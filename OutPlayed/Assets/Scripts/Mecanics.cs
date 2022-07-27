@@ -35,7 +35,7 @@ public class Mecanics : MonoBehaviour
         {
             transform.position = respawnPoint;
             DeathIncreased();
-            Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.name}");
+            Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.gameObject.name}");
         }
         else if (collision.tag == "CheckPoint")
         {
