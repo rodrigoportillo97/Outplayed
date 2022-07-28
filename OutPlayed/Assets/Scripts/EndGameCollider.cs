@@ -7,11 +7,10 @@ public class EndGameCollider : MonoBehaviour
     public GameObject endgameUI;
     public GameObject player;
     public AudioSource audioS;
-    
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
             audioS.Stop();
             GetComponent<AudioSource>().Play();
