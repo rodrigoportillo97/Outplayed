@@ -5,47 +5,16 @@ using UnityEngine.UI;
 
 public class Mecanics : MonoBehaviour
 {
-    public Vector2 respawnPoint;
     public PlayerMovement pmov;
     public Vector2 m_NewForce;
     public Rigidbody2D rb;
-    public Text deathCount;
-    public Text deathCount2;
-    private int deathcount = 0;
-    public GameObject confettiEffect;
-    public AudioClip clip;
-
+   
     private void Start()
     {
-        respawnPoint = transform.position;
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
-
-    public void DeathIncreased() 
-    {
-        deathcount++;
-        deathCount.text = deathcount.ToString();
-        deathCount2.text = deathcount.ToString();
-    }
-
-   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Floorlimit")
-        {
-            transform.position = respawnPoint;
-            DeathIncreased();
-            Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.gameObject.name}");
-        }
-        else if (collision.tag == "CheckPoint")
-        {
-            respawnPoint = transform.position;
-            GameObject go = Instantiate(confettiEffect);
-            GetComponent<AudioSource>().PlayOneShot(clip);
-            Destroy(go, 2.5f);
-            
-        }
-
         if (collision.tag == "Yellow")
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
