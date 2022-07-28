@@ -9,7 +9,7 @@ public class PlayerManagement : MonoBehaviour
     public Text deathCount2;
     private int deathcount = 0;
     private Vector2 respawnPoint;
-    bool hasDetectedTrigger = false;
+    bool hasDetectedTrigger;
 
     private void Start()
     {
