@@ -10,9 +10,12 @@ public class PlayerManagement : MonoBehaviour
     private int deathcount = 0;
     private Vector2 respawnPoint;
     bool hasDetectedTrigger;
+    public Animator anim;
+    public Rigidbody2D rb;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         respawnPoint = transform.position;
     }
 
@@ -27,9 +30,9 @@ public class PlayerManagement : MonoBehaviour
     {
         if (collision.tag == "Floorlimit" && hasDetectedTrigger == false)
         {
-            transform.position = respawnPoint;
+            Dead();
             DeathIncreased();
-            Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.gameObject.name}");
+            //Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.gameObject.name}");
         }
         else if (collision.tag == "CheckPoint" && hasDetectedTrigger == false)
         {
@@ -41,5 +44,31 @@ public class PlayerManagement : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         hasDetectedTrigger = false;
+    }
+
+    public void Dead()
+    {
+        StartCoroutine(DeadCR());
+    }
+
+    IEnumerator DeadCR()
+    {
+        anim.SetTrigger("death");
+        rb.bodyType = RigidbodyType2D.Static;
+        yield return new WaitForSeconds(1);
+        anim.SetTrigger("alive");
+        transform.position = respawnPoint;
+        Alive();
+    }
+
+    public void Alive() 
+    {
+        StartCoroutine(AliveCR());
+    }
+    
+    IEnumerator AliveCR() 
+    {
+        yield return new WaitForSeconds(1.5f);
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
 }
