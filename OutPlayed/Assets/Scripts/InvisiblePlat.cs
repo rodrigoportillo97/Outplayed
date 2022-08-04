@@ -4,33 +4,62 @@ using UnityEngine;
 
 public class InvisiblePlat : MonoBehaviour
 {
-    public Renderer rend;
+    public Sprite platform;
+
+    public bool isActive = true;
+    public float changeInterval = 1f;
+    float timeToChange;
+
+    SpriteRenderer sr;
+    BoxCollider2D coll;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        rend = GetComponent<Renderer>();
-        rend.enabled = false;
-    }
+        sr = GetComponent<SpriteRenderer>();
+        timeToChange = changeInterval;
+        coll = GetComponent<BoxCollider2D>();
 
-    void Reload() 
-    {
-        StartCoroutine(reloadCR());
-    }
-
-    IEnumerator reloadCR()
-    {
-        yield return new WaitForSeconds(3);
-        rend.enabled = false;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        if (isActive)
         {
-            rend.enabled = true;
-            Reload();
+            MakePlatform();
         }
+        else
+        {
+            NoPlatform();
+        }
+    }
+
+    private void Update()
+    {
+        if (Time.time >= timeToChange)
+        {
+            if (isActive)
+            {
+                NoPlatform();
+            }
+            else
+            {
+                MakePlatform();
+            }
+            timeToChange = Time.time + changeInterval;
+        }
+    }
+
+    public void MakePlatform()
+    {
+        sr.sprite = platform;
+        sr.enabled = true;
+        isActive = true;
+        coll.enabled = true;
+    }
+
+    public void NoPlatform()
+    {
+        sr.enabled = false;
+        isActive = false;
+        coll.enabled = false;
+        
     }
 }
