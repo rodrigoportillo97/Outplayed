@@ -11,6 +11,7 @@ public class Arrows : MonoBehaviour
     {
         float movementSpeed = speed * Time.deltaTime;
         transform.Translate(movementSpeed, 0, 0);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
