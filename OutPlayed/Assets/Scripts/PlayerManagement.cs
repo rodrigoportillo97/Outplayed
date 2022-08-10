@@ -28,7 +28,7 @@ public class PlayerManagement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Floorlimit" && hasDetectedTrigger == false)
+        if (collision.tag == "deadPoint" && hasDetectedTrigger == false)
         {
             Dead();
             DeathIncreased();
