@@ -15,6 +15,7 @@ TagManager:
   - BlueYellow
   - BlueGreen
   - Enemy
+  - deadPoint
   layers:
   - Default
   - TransparentFX
