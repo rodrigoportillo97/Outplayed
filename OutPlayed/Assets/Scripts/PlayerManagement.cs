@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerManagement : MonoBehaviour
 {
+    [SerializeField] private PlayerMovement pmov;
     public Text deathCount;
     public Text deathCount2;
     private int deathcount = 0;
     private Vector2 respawnPoint;
     bool hasDetectedTrigger;
     public Animator anim;
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class PlayerManagement : MonoBehaviour
     {
         if (collision.tag == "deadPoint" && hasDetectedTrigger == false)
         {
+            pmov.enabled = false;
             Dead();
             DeathIncreased();
             //Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.gameObject.name}");
@@ -55,9 +57,9 @@ public class PlayerManagement : MonoBehaviour
     {
         anim.SetTrigger("death");
         rb.bodyType = RigidbodyType2D.Static;
-        yield return new WaitForSeconds(1);
-        anim.SetTrigger("alive");
+        yield return new WaitForSeconds(1.5f);
         transform.position = respawnPoint;
+        anim.SetTrigger("alive");
         Alive();
     }
 
@@ -70,5 +72,7 @@ public class PlayerManagement : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         rb.bodyType = RigidbodyType2D.Dynamic;
+        anim.SetTrigger("isAlive");
+        pmov.enabled = true;
     }
 }
