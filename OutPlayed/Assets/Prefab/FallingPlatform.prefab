@@ -165,3 +165,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 7528726064405585000}
+  platformPrefab: {fileID: 7528726064405585015}

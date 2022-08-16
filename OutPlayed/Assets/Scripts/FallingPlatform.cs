@@ -6,10 +6,13 @@ public class FallingPlatform : MonoBehaviour
 {
     Rigidbody2D rb;
     public Animator anim;
+    [SerializeField] private GameObject platformPrefab;
+    public Vector2 startPos;
 
     // Start is called before the first frame update
     void Start()
     {
+        startPos = transform.position;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -20,11 +23,14 @@ public class FallingPlatform : MonoBehaviour
 
     IEnumerator fallCR() 
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         anim.SetTrigger("off");
         rb.bodyType = RigidbodyType2D.Dynamic;
         yield return new WaitForSeconds(1.5f);
-        Destroy(gameObject);
+        rb.bodyType = RigidbodyType2D.Static;
+        transform.position = startPos;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        anim.SetTrigger("on");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,7 +38,9 @@ public class FallingPlatform : MonoBehaviour
         if (collision.collider.tag == "Player")
         {
             Fall();
+    
         }
     }
+
 
 }
