@@ -7,17 +7,19 @@ public class Mecanics : MonoBehaviour
 {
     public PlayerMovement pmov;
     public Vector2 m_NewForce;
-    public Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private SpriteRenderer sr;
    
     private void Start()
     {
+        sr = gameObject.GetComponent<SpriteRenderer>();
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Yellow")
         {
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            sr.enabled = false;
         }
 
         if (collision.tag == "Blue")
@@ -38,7 +40,7 @@ public class Mecanics : MonoBehaviour
     {
         if (collision.tag == "Yellow")
         {
-            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            sr.enabled = true;
         }
 
         if (collision.tag == "Blue")

@@ -5,17 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Floorlimit
   - CheckPoint
   - Red
-  - Yellow
   - Blue
   - Green
   - RedUP
   - BlueYellow
-  - BlueGreen
   - Enemy
   - deadPoint
+  - Yellow
   layers:
   - Default
   - TransparentFX

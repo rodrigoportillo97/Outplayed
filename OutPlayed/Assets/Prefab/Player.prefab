@@ -5109,6 +5109,7 @@ MonoBehaviour:
   pmov: {fileID: 1449846500}
   m_NewForce: {x: 0, y: 0}
   rb: {fileID: 8282301003676705747}
+  sr: {fileID: 0}
 --- !u!114 &602243391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5121,10 +5122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a31013b32944ddc448c7b13811ad0a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pmov: {fileID: 1449846500}
   deathCount: {fileID: 0}
   deathCount2: {fileID: 0}
   anim: {fileID: 6010956580435953210}
-  pmov: {fileID: 0}
 --- !u!82 &602243389
 AudioSource:
   m_ObjectHideFlags: 0
