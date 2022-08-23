@@ -15,6 +15,12 @@ public class Mecanics : MonoBehaviour
         sr = gameObject.GetComponent<SpriteRenderer>();
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
+    
+    public void DisableSprite() 
+    {
+        sr.enabled = false; 
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Yellow")

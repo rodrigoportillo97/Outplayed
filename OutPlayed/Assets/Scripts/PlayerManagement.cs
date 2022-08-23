@@ -60,6 +60,7 @@ public class PlayerManagement : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         transform.position = respawnPoint;
         anim.SetTrigger("alive");
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
         Alive();
     }
 
