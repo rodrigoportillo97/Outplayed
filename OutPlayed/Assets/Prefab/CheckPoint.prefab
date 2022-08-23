@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.08015138, y: 0.3516466}
+  m_Offset: {x: -0.0325524, y: 0.3516466}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.33144635, y: 1.3432931}
+  m_Size: {x: 0.10603885, y: 1.3432931}
   m_EdgeRadius: 0
 --- !u!82 &3441008342265024046
 AudioSource:
@@ -241,3 +241,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   confettiEffect: {fileID: 177303064988028915, guid: 29a403133d4b69743ae5947995b67535, type: 3}
   checkpoint: {fileID: 3441008342265024044}
+  isTrigger: 0
