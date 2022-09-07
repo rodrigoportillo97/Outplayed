@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2044345918518455358}
   - component: {fileID: 2044345918518455489}
+  - component: {fileID: 1193022024366912674}
   m_Layer: 0
   m_Name: ArrowSpawner
   m_TagString: Untagged
@@ -48,6 +49,32 @@ MonoBehaviour:
   timeBetweenArrows: 1
   firepoint: {fileID: 2044345919148123898}
   arrowsPrefab: {fileID: 1995217225821192925, guid: 8738b07b6a1d05f41bcb49ee8deed002, type: 3}
+--- !u!61 &1193022024366912674
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044345918518455488}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.33695564, y: -0.0041988194}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.26730508, y: 0.40796584}
+  m_EdgeRadius: 0
 --- !u!1 &2044345918926666542
 GameObject:
   m_ObjectHideFlags: 0
