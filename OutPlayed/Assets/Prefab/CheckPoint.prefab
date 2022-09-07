@@ -242,3 +242,4 @@ MonoBehaviour:
   confettiEffect: {fileID: 177303064988028915, guid: 29a403133d4b69743ae5947995b67535, type: 3}
   checkpoint: {fileID: 3441008342265024044}
   isTrigger: 0
+  text: {fileID: 0}

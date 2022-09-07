@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CheckPoint : MonoBehaviour
 {
     public GameObject confettiEffect;
     public Transform checkpoint;
     public bool isTrigger = false;
+    public TMP_Text text;
+
+    private void Start()
+    {
+        text.enabled = false;
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,6 +26,7 @@ public class CheckPoint : MonoBehaviour
             GetComponent<Animator>().enabled = true;
             GetComponent<Collider2D>().enabled = false;
             isTrigger = true;
+            text.enabled = true;
         }
     }
 
