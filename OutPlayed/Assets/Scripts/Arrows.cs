@@ -6,10 +6,12 @@ public class Arrows : MonoBehaviour
 {
     [SerializeField] private float speed;
     public Animator anim;
-
+    private BoxCollider2D bc;
+        
     private void Start()
     {
        anim = GetComponentInChildren<Animator>();
+       bc = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -22,9 +24,9 @@ public class Arrows : MonoBehaviour
     {
         speed = 0;
         anim.enabled = true;
+        bc.enabled = false;
         Destroy();
     }
-
     public void Destroy()
     {
         StartCoroutine(DestroyCR());
@@ -32,7 +34,7 @@ public class Arrows : MonoBehaviour
 
     IEnumerator DestroyCR() 
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.4f);
         Destroy(gameObject);
     }
 }

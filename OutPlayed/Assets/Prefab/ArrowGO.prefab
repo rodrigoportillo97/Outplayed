@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2717016039734353527}
   - component: {fileID: 8161999305363028773}
   - component: {fileID: 2164734808522056986}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArrowGO
   m_TagString: deadPoint
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 1580200113794167835}
   - component: {fileID: 7606906459475018579}
   - component: {fileID: 9144581349408079889}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arrow
   m_TagString: deadPoint
   m_Icon: {fileID: 0}

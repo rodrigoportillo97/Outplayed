@@ -14,6 +14,7 @@ TagManager:
   - Enemy
   - deadPoint
   - Yellow
+  - Floorlimit
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,8 @@ TagManager:
   - Player
   - Checkpoint
   - Enemy
-  - 
-  - 
+  - Arrow
+  - Zones
   - 
   - 
   - 
