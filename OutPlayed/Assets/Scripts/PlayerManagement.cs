@@ -34,12 +34,14 @@ public class PlayerManagement : MonoBehaviour
             pmov.enabled = false;
             Dead();
             DeathIncreased();
-            //Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.gameObject.name}");
+            Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.gameObject.name}");
         }
         else if (collision.tag == "CheckPoint" && hasDetectedTrigger == false)
         {
             respawnPoint = transform.position;
+
         }
+
         hasDetectedTrigger = true;
     }
 
