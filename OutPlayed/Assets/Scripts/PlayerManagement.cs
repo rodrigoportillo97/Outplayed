@@ -13,10 +13,14 @@ public class PlayerManagement : MonoBehaviour
     bool hasDetectedTrigger;
     public Animator anim;
     private Rigidbody2D rb;
+    private BoxCollider2D bc;
+    private CircleCollider2D cc;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        bc = GetComponent<BoxCollider2D>();
+        cc = GetComponent<CircleCollider2D>();
         respawnPoint = transform.position;
     }
 
@@ -39,7 +43,6 @@ public class PlayerManagement : MonoBehaviour
         else if (collision.tag == "CheckPoint" && hasDetectedTrigger == false)
         {
             respawnPoint = transform.position;
-
         }
 
         hasDetectedTrigger = true;
@@ -57,8 +60,10 @@ public class PlayerManagement : MonoBehaviour
 
     IEnumerator DeadCR()
     {
+        bc.enabled = false;
+        cc.enabled = false;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         anim.SetTrigger("death");
-        rb.bodyType = RigidbodyType2D.Static;
         yield return new WaitForSeconds(1.5f);
         transform.position = respawnPoint;
         anim.SetTrigger("alive");
@@ -74,8 +79,10 @@ public class PlayerManagement : MonoBehaviour
     IEnumerator AliveCR() 
     {
         yield return new WaitForSeconds(1.5f);
-        rb.bodyType = RigidbodyType2D.Dynamic;
         anim.SetTrigger("isAlive");
+        bc.enabled = true;
+        cc.enabled = true;
+        rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
         pmov.enabled = true;
     }
 }
