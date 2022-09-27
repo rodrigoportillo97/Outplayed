@@ -7,7 +7,7 @@ public class CheckPoint : MonoBehaviour
 {
     public GameObject confettiEffect;
     public Transform checkpoint;
-    public bool isTrigger = false;
+    public bool isTrigger;
     public TMP_Text text;
 
     private void Start()

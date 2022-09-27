@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class PlayerManagement : MonoBehaviour
 {
     [SerializeField] private PlayerMovement pmov;
+    [SerializeField] private bool hasDetectedTrigger;
     public Text deathCount;
     public Text deathCount2;
     private int deathcount = 0;
     private Vector2 respawnPoint;
-    bool hasDetectedTrigger;
     public Animator anim;
     private Rigidbody2D rb;
     private BoxCollider2D bc;
@@ -40,14 +40,15 @@ public class PlayerManagement : MonoBehaviour
             DeathIncreased();
             Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.gameObject.name}");
         }
-        else if (collision.tag == "CheckPoint" && hasDetectedTrigger == false)
+        if (collision.tag == "CheckPoint" && hasDetectedTrigger == false)
         {
             respawnPoint = transform.position;
+            Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.gameObject.name}");
         }
 
         hasDetectedTrigger = true;
-    }
 
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         hasDetectedTrigger = false;
