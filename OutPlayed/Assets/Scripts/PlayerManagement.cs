@@ -15,9 +15,12 @@ public class PlayerManagement : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D bc;
     private CircleCollider2D cc;
+    
+
 
     private void Start()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
         cc = GetComponent<CircleCollider2D>();
@@ -33,24 +36,30 @@ public class PlayerManagement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log($"OnTriggerEnter2D from {hasDetectedTrigger} collided with {collision.gameObject.name}");
         if (collision.tag == "deadPoint" && hasDetectedTrigger == false)
         {
             pmov.enabled = false;
             Dead();
             DeathIncreased();
+            hasDetectedTrigger = true;
             Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.gameObject.name}");
         }
-        if (collision.tag == "CheckPoint" && hasDetectedTrigger == false)
+        else if (collision.tag == "CheckPoint" && hasDetectedTrigger == false)
         {
+
+            collision.gameObject.GetComponent<CheckPoint>()?.ActivateCheckPoint();
             respawnPoint = transform.position;
-            Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.gameObject.name}");
+            hasDetectedTrigger = true;
         }
 
-        hasDetectedTrigger = true;
+        //hasDetectedTrigger = true;
 
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        
+        Debug.Log($"OnTriggerExit2D from {hasDetectedTrigger} collided with {collision.gameObject.name}");
         hasDetectedTrigger = false;
     }
 
@@ -64,6 +73,7 @@ public class PlayerManagement : MonoBehaviour
         bc.enabled = false;
         cc.enabled = false;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        anim.SetBool("isJumping", false);
         anim.SetTrigger("death");
         yield return new WaitForSeconds(1.5f);
         transform.position = respawnPoint;

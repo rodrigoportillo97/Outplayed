@@ -7,7 +7,6 @@ public class CheckPoint : MonoBehaviour
 {
     public GameObject confettiEffect;
     public Transform checkpoint;
-    public bool isTrigger;
     public TMP_Text text;
 
     private void Start()
@@ -15,8 +14,18 @@ public class CheckPoint : MonoBehaviour
         text.enabled = false;
     }
 
+    public void ActivateCheckPoint() 
+    {
+        GameObject go = Instantiate(confettiEffect, checkpoint.position, checkpoint.rotation);
+        Destroy(go, 2.5f);
+        GetComponent<AudioSource>().Play();
+        GetComponent<Animator>().enabled = true;
+        GetComponent<Collider2D>().enabled = false;
+        text.enabled = true;
+    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player" && isTrigger == false)
         {
@@ -32,6 +41,10 @@ public class CheckPoint : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isTrigger = false;
-    }
+        if (collision.tag == "Player")
+        {
+            isTrigger = false;
+            Debug.Log($"OnTriggerExit2D from {gameObject.name} collided with {collision.gameObject.name}");
+        }
+    }*/
 }
