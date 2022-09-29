@@ -58,6 +58,12 @@ public class Mecanics : MonoBehaviour
             rb.AddForce(m_NewForce, ForceMode2D.Impulse);
         }
 
+        if (coll.tag == "RedUP")
+        {
+            m_NewForce = new Vector2(0f, 0.2f);
+            rb.AddForce(m_NewForce, ForceMode2D.Impulse);
+        }
+
     }
 }
 
