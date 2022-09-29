@@ -35,6 +35,7 @@ public class EndGameUI : MonoBehaviour
 
     public void PlayAgain() 
     {
+        Time.timeScale = 1;
         fader.FadeAgain();
         Debug.Log("Reloading...");
 
@@ -42,6 +43,7 @@ public class EndGameUI : MonoBehaviour
 
     public void QuitGame() 
     {
+        Time.timeScale = 1;
         Application.Quit();
         Debug.Log("Quitting...");
 
