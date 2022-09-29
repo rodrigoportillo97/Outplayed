@@ -11,12 +11,14 @@ public class IngameUI : MonoBehaviour
     public Text txtTimer;
     private float time;
     private bool timerfinish = false;
+    public PlayerManagement loadcheckpoint;
 
 
     void Start()
     {
         txtTimer.text = "00:00";
         time = 0;
+        
     }
 
     void Update()
@@ -66,6 +68,11 @@ public class IngameUI : MonoBehaviour
     {
         Time.timeScale = 1f;
         fader.FadeBack();
+    }
+    
+    public void ReloadwhenStuck() 
+    {
+        loadcheckpoint.Dead();
     }
 
     public void Retry() 

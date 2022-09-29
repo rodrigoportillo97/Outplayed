@@ -36,12 +36,14 @@ public class EndGameUI : MonoBehaviour
     public void PlayAgain() 
     {
         fader.FadeAgain();
-        
+        Debug.Log("Reloading...");
+
     }
 
     public void QuitGame() 
     {
         Application.Quit();
+        Debug.Log("Quitting...");
 
     }
 }
