@@ -9,7 +9,7 @@ public class IngameUI : MonoBehaviour
     public GameObject pauseMenuUI;
     public SceneFader fader;
     public Text txtTimer;
-    private float time;
+    public float time;
     private bool timerfinish = false;
     public PlayerManagement loadcheckpoint;
 
@@ -85,5 +85,7 @@ public class IngameUI : MonoBehaviour
         Debug.Log("Quitting...");
         Application.Quit();
     }
+
+
 
 }

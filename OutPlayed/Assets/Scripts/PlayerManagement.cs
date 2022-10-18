@@ -9,18 +9,19 @@ public class PlayerManagement : MonoBehaviour
     [SerializeField] private bool hasDetectedTrigger;
     public Text deathCount;
     public Text deathCount2;
-    private int deathcount = 0;
+    public int deathcount = 0;
     private Vector2 respawnPoint;
     public Animator anim;
     private Rigidbody2D rb;
     private BoxCollider2D bc;
     private CircleCollider2D cc;
-    
+    public IngameUI ui;
+
 
 
     private void Start()
     {
-        
+
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
         cc = GetComponent<CircleCollider2D>();
@@ -58,7 +59,7 @@ public class PlayerManagement : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
+
         Debug.Log($"OnTriggerExit2D from {hasDetectedTrigger} collided with {collision.gameObject.name}");
         hasDetectedTrigger = false;
     }
@@ -82,12 +83,12 @@ public class PlayerManagement : MonoBehaviour
         Alive();
     }
 
-    public void Alive() 
+    public void Alive()
     {
         StartCoroutine(AliveCR());
     }
-    
-    IEnumerator AliveCR() 
+
+    IEnumerator AliveCR()
     {
         yield return new WaitForSeconds(1.5f);
         anim.SetTrigger("isAlive");
@@ -95,5 +96,24 @@ public class PlayerManagement : MonoBehaviour
         cc.enabled = true;
         rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
         pmov.enabled = true;
+    }
+
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this, ui);
+    }
+
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        deathcount = data.deaths;
+        ui.time = data.time;
+
+        Vector2 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        transform.position = position;
+
     }
 }
