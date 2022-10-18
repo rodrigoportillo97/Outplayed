@@ -17,7 +17,7 @@ public class PlayerManagement : MonoBehaviour
     private CircleCollider2D cc;
     public IngameUI ui;
 
-
+   
 
     private void Start()
     {
