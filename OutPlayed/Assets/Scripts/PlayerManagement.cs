@@ -9,7 +9,7 @@ public class PlayerManagement : MonoBehaviour
     [SerializeField] private bool hasDetectedTrigger;
     public Text deathCount;
     public Text deathCount2;
-    public int deathcount = 0;
+    public int deathcount;
     private Vector2 respawnPoint;
     public Animator anim;
     private Rigidbody2D rb;
