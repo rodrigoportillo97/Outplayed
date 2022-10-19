@@ -98,22 +98,5 @@ public class PlayerManagement : MonoBehaviour
         pmov.enabled = true;
     }
 
-    public void SavePlayer()
-    {
-        SaveSystem.SavePlayer(this, ui);
-    }
-
-    public void LoadPlayer()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
-
-        deathcount = data.deaths;
-        ui.time = data.time;
-
-        Vector2 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        transform.position = position;
-
-    }
+ 
 }
