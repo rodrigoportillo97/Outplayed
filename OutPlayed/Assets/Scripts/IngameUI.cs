@@ -9,9 +9,12 @@ public class IngameUI : MonoBehaviour
     public GameObject pauseMenuUI;
     public SceneFader fader;
     public Text txtTimer;
+    public Text txtTimer2;
     public float time;
-    private bool timerfinish = false;
+    public bool timerfinish = false;
     public PlayerManagement loadcheckpoint;
+    public int min;
+    public int seg;
 
 
     void Start()
@@ -44,9 +47,10 @@ public class IngameUI : MonoBehaviour
     public void TimeCalculate()
     {
         time += Time.deltaTime;
-        int min = (int)time / 60;
-        int seg = (int)time % 60;
+        min = (int)time / 60;
+        seg = (int)time % 60;
         txtTimer.text = min.ToString() + ":" + seg.ToString().PadLeft(2, '0');
+        txtTimer2.text = min.ToString() + ":" + seg.ToString().PadLeft(2, '0');
     }
 
 
