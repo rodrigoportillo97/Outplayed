@@ -76,7 +76,7 @@ public class PlayerManagement : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         anim.SetBool("isJumping", false);
         anim.SetTrigger("death");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.7f);
         transform.position = respawnPoint;
         anim.SetTrigger("alive");
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -90,7 +90,7 @@ public class PlayerManagement : MonoBehaviour
 
     IEnumerator AliveCR()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.7f);
         anim.SetTrigger("isAlive");
         bc.enabled = true;
         cc.enabled = true;
