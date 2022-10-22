@@ -13,15 +13,12 @@ public class IngameUI : MonoBehaviour
     public float time;
     public bool timerfinish = false;
     public PlayerManagement loadcheckpoint;
-    public int min;
-    public int seg;
-
+    public int min, seg;
 
     void Start()
     {
         txtTimer.text = "00:00";
         time = 0;
-        
     }
 
     void Update()

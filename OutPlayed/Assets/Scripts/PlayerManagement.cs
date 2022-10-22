@@ -17,7 +17,7 @@ public class PlayerManagement : MonoBehaviour
     private CircleCollider2D cc;
     public IngameUI ui;
 
-   
+    
 
     private void Start()
     {
@@ -25,6 +25,8 @@ public class PlayerManagement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
         cc = GetComponent<CircleCollider2D>();
+
+        transform.position = SaveData.Instance.GetPosition("Player", transform.position);
         respawnPoint = transform.position;
     }
 
@@ -48,8 +50,9 @@ public class PlayerManagement : MonoBehaviour
         }
         else if (collision.tag == "CheckPoint" && hasDetectedTrigger == false)
         {
-
             collision.gameObject.GetComponent<CheckPoint>()?.ActivateCheckPoint();
+            SaveData.Instance.SetPosition("Player", transform.position);
+            SaveData.Instance.Save();
             respawnPoint = transform.position;
             hasDetectedTrigger = true;
         }
