@@ -46,12 +46,6 @@ public class SaveData : MonoBehaviour
     {
         PlayerPrefs.SetFloat(key, value);
     }
-
-    public void SetInt(string key, int value)
-    {
-        PlayerPrefs.SetInt(key, value);
-    }
-
     public float GetFloat(string key, float value)
     {
         if (PlayerPrefs.HasKey(key))
@@ -64,6 +58,12 @@ public class SaveData : MonoBehaviour
             return value;
         }
     }
+    public void SetInt(string key, int value)
+    {
+        PlayerPrefs.SetInt(key, value);
+    }
+
+    
     public int GetInt(string key, int value)
     {
         if (PlayerPrefs.HasKey(key))
@@ -79,6 +79,24 @@ public class SaveData : MonoBehaviour
     {
         PlayerPrefs.Save();
     }
+
+    public void DeleteKeysForAdmin()
+    {
+        if (PlayerPrefs.HasKey($"Player_x") && PlayerPrefs.HasKey($"Player_y"))
+        {
+            PlayerPrefs.DeleteKey($"Player_x");
+            PlayerPrefs.DeleteKey($"Player_y");
+            Debug.Log("The key " + $"Player_x" + " exists and its been deleted");
+            Debug.Log("The key " + $"Player_y" + " exists and its been deleted");
+        }
+        else
+        {
+            Debug.Log("The key " + $"Player_x" + " does not exist");
+            Debug.Log("The key " + $"Player_y" + " does not exist");
+        }
+    }
+
+} 
     /*public void SavePrefs()
     {
         x = transform.position.x;
@@ -122,4 +140,4 @@ public class SaveData : MonoBehaviour
 
 
     }*/
-}
+

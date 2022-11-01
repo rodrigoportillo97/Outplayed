@@ -11,14 +11,20 @@ public class IngameUI : MonoBehaviour
     public Text txtTimer;
     public Text txtTimer2;
     public float time;
-    public bool timerfinish = false;
+    private bool timerfinish = false;
     public PlayerManagement loadcheckpoint;
     public int min, seg;
+    public GameObject deleteKeyButton;
 
     void Start()
     {
         txtTimer.text = "00:00";
         time = 0;
+
+        if (Application.isEditor)
+        {
+            deleteKeyButton.SetActive(true);
+        }
     }
 
     void Update()
