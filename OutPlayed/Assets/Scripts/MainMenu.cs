@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
     public SceneFader fader;
     public Button continueGameButton;
+    public TextMeshProUGUI textColor;
 
     public void PlayGame() 
     {
@@ -24,11 +26,12 @@ public class MainMenu : MonoBehaviour
     {
         if (PlayerPrefs.HasKey($"Player_x"))
         {
-            continueGameButton.IsInteractable();
+            continueGameButton.interactable = true;
         }
         else
         {
-            
+            continueGameButton.interactable = false;
+            textColor.color = new Color32(155, 155, 155, 255);
         }
     }
 

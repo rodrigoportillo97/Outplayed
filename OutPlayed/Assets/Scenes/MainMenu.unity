@@ -4581,7 +4581,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CONTINUE
+  m_text: CONTINUE GAME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -4608,8 +4608,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 79.11
-  m_fontSizeBase: 79.11
+  m_fontSize: 69.75
+  m_fontSizeBase: 69.75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10690,6 +10690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fader: {fileID: 1925331726}
   continueGameButton: {fileID: 1987595320}
+  textColor: {fileID: 1114525617}
 --- !u!1 &1459898047
 GameObject:
   m_ObjectHideFlags: 0
@@ -12820,7 +12821,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.3373, y: 100.1}
-  m_SizeDelta: {x: 273.7906, y: 75.0699}
+  m_SizeDelta: {x: 372.8176, y: 75.0699}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1987595320
 MonoBehaviour:
@@ -12847,7 +12848,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.21960784}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.36078432}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.4117647}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.4745098}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
