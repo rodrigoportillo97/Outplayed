@@ -8,6 +8,7 @@ public class CheckPoint : MonoBehaviour
     public GameObject confettiEffect;
     public Transform checkpoint;
     public TMP_Text text;
+    public GameObject savedGameAnim;
 
     private void Start()
     {
@@ -17,11 +18,19 @@ public class CheckPoint : MonoBehaviour
     public void ActivateCheckPoint() 
     {
         GameObject go = Instantiate(confettiEffect, checkpoint.position, checkpoint.rotation);
+        GameSavedText();
         Destroy(go, 2.5f);
         GetComponent<AudioSource>().Play();
         GetComponent<Animator>().enabled = true;
         GetComponent<Collider2D>().enabled = false;
         text.enabled = true;
+    }
+
+    public void GameSavedText() 
+    {
+        GameObject savedGame = Instantiate(savedGameAnim);
+        savedGame.transform.SetParent(FindObjectOfType<IngameUI>().transform);
+        Destroy(savedGame, 10f);
     }
 
 
