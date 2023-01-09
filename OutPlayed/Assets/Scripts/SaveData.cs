@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SaveData : MonoBehaviour
 {
     public static SaveData Instance;
+    public PlayerManagement pm;
 
     public void Awake()
     {
@@ -42,7 +43,28 @@ public class SaveData : MonoBehaviour
         
     }
 
-    public void SetFloat(string key, float value) 
+    public void SetDeaths(string key, int value)
+    {
+        PlayerPrefs.SetInt($"{key}", value);
+        pm.deathCount.text = value.ToString();
+        pm.deathCount2.text = value.ToString();
+    }
+    
+    public int GetDeaths(string key, int value)
+    {
+        if (PlayerPrefs.HasKey($"{key}"))
+        {
+            pm.deathCount.text = value.ToString();
+            pm.deathCount2.text = value.ToString();
+            return PlayerPrefs.GetInt($"{key}", value);
+        }
+        else
+        {
+            return value;
+        }
+    }
+
+    public void SetFloat(string key, float value)
     {
         PlayerPrefs.SetFloat(key, value);
     }
@@ -58,34 +80,18 @@ public class SaveData : MonoBehaviour
             return value;
         }
     }
-    public void SetInt(string key, int value)
-    {
-        PlayerPrefs.SetInt(key, value);
-    }
-
-    
-    public int GetInt(string key, int value)
-    {
-        if (PlayerPrefs.HasKey(key))
-        {
-           return PlayerPrefs.GetInt(key, value);
-        }
-        else
-        {
-            return value;
-        }
-    }
     public void Save()
     {
         PlayerPrefs.Save();
     }
-
     public void DeleteKeysForAdmin()
     {
-        if (PlayerPrefs.HasKey($"Player_x") && PlayerPrefs.HasKey($"Player_y"))
+        if (PlayerPrefs.HasKey($"Player_x") && PlayerPrefs.HasKey($"Player_y") && PlayerPrefs.HasKey($"Death"))
         {
             PlayerPrefs.DeleteKey($"Player_x");
             PlayerPrefs.DeleteKey($"Player_y");
+            PlayerPrefs.DeleteKey($"Death");
+            Debug.Log("The key " + $"Death" + " exists and its been deleted");
             Debug.Log("The key " + $"Player_x" + " exists and its been deleted");
             Debug.Log("The key " + $"Player_y" + " exists and its been deleted");
         }
@@ -93,6 +99,7 @@ public class SaveData : MonoBehaviour
         {
             Debug.Log("The key " + $"Player_x" + " does not exist");
             Debug.Log("The key " + $"Player_y" + " does not exist");
+            Debug.Log("The key " + $"Death" + " does not exist");
         }
     }
 

@@ -26,6 +26,7 @@ public class PlayerManagement : MonoBehaviour
         bc = GetComponent<BoxCollider2D>();
         cc = GetComponent<CircleCollider2D>();
 
+        deathcount = SaveData.Instance.GetDeaths("Death", deathcount);
         transform.position = SaveData.Instance.GetPosition("Player", transform.position);
         respawnPoint = transform.position;
     }
@@ -46,12 +47,14 @@ public class PlayerManagement : MonoBehaviour
             Dead();
             DeathIncreased();
             hasDetectedTrigger = true;
+            Debug.Log(deathcount);
             Debug.Log($"OnTriggerEnter2D from {gameObject.name} collided with {collision.gameObject.name}");
         }
         else if (collision.tag == "CheckPoint" && hasDetectedTrigger == false)
         {
             collision.gameObject.GetComponent<CheckPoint>()?.ActivateCheckPoint();
             SaveData.Instance.SetPosition("Player", transform.position);
+            SaveData.Instance.SetDeaths("Death", deathcount);
             SaveData.Instance.Save();
             respawnPoint = transform.position;
             hasDetectedTrigger = true;
