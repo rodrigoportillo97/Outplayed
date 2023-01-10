@@ -20,6 +20,7 @@ public class IngameUI : MonoBehaviour
     {
         txtTimer.text = "00:00";
         time = 0;
+        time = SaveData.Instance.GetTimer("Timer", time);
 
         if (Application.isEditor)
         {
@@ -45,6 +46,7 @@ public class IngameUI : MonoBehaviour
                 Pause();
             }
         }
+        
     }
 
     public void TimeCalculate()

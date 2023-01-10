@@ -7,6 +7,7 @@ public class SaveData : MonoBehaviour
 {
     public static SaveData Instance;
     public PlayerManagement pm;
+    public IngameUI timer;
 
     public void Awake()
     {
@@ -21,6 +22,7 @@ public class SaveData : MonoBehaviour
         }
     }
 
+    // Checkpoint Saved
     public void SetPosition(string key, Vector2 value)
     {
         PlayerPrefs.SetFloat($"{key}_x", value.x);
@@ -43,6 +45,7 @@ public class SaveData : MonoBehaviour
         
     }
 
+    // Death Saved
     public void SetDeaths(string key, int value)
     {
         PlayerPrefs.SetInt($"{key}", value);
@@ -64,22 +67,25 @@ public class SaveData : MonoBehaviour
         }
     }
 
-    public void SetFloat(string key, float value)
+    // Timer Saved
+    public void SetTimer(string key, float value) 
     {
-        PlayerPrefs.SetFloat(key, value);
+        PlayerPrefs.SetFloat($"{key}", value);
     }
-    public float GetFloat(string key, float value)
-    {
-        if (PlayerPrefs.HasKey(key))
-        {
-            return PlayerPrefs.GetFloat(key, value);
 
+    public float GetTimer(string key, float value)
+    {
+        if (PlayerPrefs.HasKey($"{key}"))
+        {
+            return PlayerPrefs.GetFloat($"{key}", value);
         }
         else
         {
             return value;
         }
     }
+
+
     public void Save()
     {
         PlayerPrefs.Save();
@@ -91,6 +97,7 @@ public class SaveData : MonoBehaviour
             PlayerPrefs.DeleteKey($"Player_x");
             PlayerPrefs.DeleteKey($"Player_y");
             PlayerPrefs.DeleteKey($"Death");
+
             Debug.Log("The key " + $"Death" + " exists and its been deleted");
             Debug.Log("The key " + $"Player_x" + " exists and its been deleted");
             Debug.Log("The key " + $"Player_y" + " exists and its been deleted");
@@ -100,6 +107,20 @@ public class SaveData : MonoBehaviour
             Debug.Log("The key " + $"Player_x" + " does not exist");
             Debug.Log("The key " + $"Player_y" + " does not exist");
             Debug.Log("The key " + $"Death" + " does not exist");
+        }
+
+        if (PlayerPrefs.HasKey($"Timer"))
+        {
+            PlayerPrefs.DeleteKey($"Timer");
+            
+
+            Debug.Log("The key " + $"Timer" + " exists and its been deleted");
+            
+        }
+        else
+        {
+            Debug.Log("The key " + $"Timer" + " does not exist");
+            
         }
     }
 

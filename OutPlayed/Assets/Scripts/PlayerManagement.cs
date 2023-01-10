@@ -55,6 +55,7 @@ public class PlayerManagement : MonoBehaviour
             collision.gameObject.GetComponent<CheckPoint>()?.ActivateCheckPoint();
             SaveData.Instance.SetPosition("Player", transform.position);
             SaveData.Instance.SetDeaths("Death", deathcount);
+            SaveData.Instance.SetTimer("Timer", ui.time);
             SaveData.Instance.Save();
             respawnPoint = transform.position;
             hasDetectedTrigger = true;
