@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class SaveData : MonoBehaviour
 {
     public static SaveData Instance;
-    public PlayerManagement pm;
-    public IngameUI timer;
+    
+   
 
     public void Awake()
     {
@@ -42,23 +42,18 @@ public class SaveData : MonoBehaviour
         {
             return value;
         }
-        
     }
 
     // Death Saved
     public void SetDeaths(string key, int value)
     {
         PlayerPrefs.SetInt($"{key}", value);
-        pm.deathCount.text = value.ToString();
-        pm.deathCount2.text = value.ToString();
     }
     
     public int GetDeaths(string key, int value)
     {
         if (PlayerPrefs.HasKey($"{key}"))
         {
-            pm.deathCount.text = value.ToString();
-            pm.deathCount2.text = value.ToString();
             return PlayerPrefs.GetInt($"{key}", value);
         }
         else
@@ -84,7 +79,6 @@ public class SaveData : MonoBehaviour
             return value;
         }
     }
-
 
     public void Save()
     {
@@ -112,18 +106,13 @@ public class SaveData : MonoBehaviour
         if (PlayerPrefs.HasKey($"Timer"))
         {
             PlayerPrefs.DeleteKey($"Timer");
-            
-
             Debug.Log("The key " + $"Timer" + " exists and its been deleted");
-            
         }
         else
         {
             Debug.Log("The key " + $"Timer" + " does not exist");
-            
         }
     }
-
 } 
     /*public void SavePrefs()
     {
