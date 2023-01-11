@@ -5100,9 +5100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pmov: {fileID: 1449846500}
+  hasDetectedTrigger: 0
   deathCount: {fileID: 0}
   deathCount2: {fileID: 0}
+  deathcount: 0
   anim: {fileID: 6010956580435953210}
+  ui: {fileID: 0}
 --- !u!82 &602243389
 AudioSource:
   m_ObjectHideFlags: 0

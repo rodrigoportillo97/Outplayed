@@ -21,21 +21,27 @@ public class PlayerManagement : MonoBehaviour
 
     private void Start()
     {
-
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
         cc = GetComponent<CircleCollider2D>();
+
+        deathCount.text = "0";
+        deathCount2.text = "0";
+        deathcount = 0;
 
         deathcount = SaveData.Instance.GetDeaths("Death", deathcount);
         transform.position = SaveData.Instance.GetPosition("Player", transform.position);
         respawnPoint = transform.position;
     }
+    public void Update()
+    {
+        deathCount.text = deathcount.ToString();
+        deathCount2.text = deathcount.ToString();
+    }
 
     public void DeathIncreased()
     {
         deathcount++;
-        deathCount.text = deathcount.ToString();
-        deathCount2.text = deathcount.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
