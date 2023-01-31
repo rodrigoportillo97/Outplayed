@@ -46,11 +46,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void PointerUpJump() 
     {
-        jump = true;
+        jump = false;
     }
     public void PointerDownJump()
     {
-        jump = false;
+        jump = true;
     }
 
     // Update is called once per frame
