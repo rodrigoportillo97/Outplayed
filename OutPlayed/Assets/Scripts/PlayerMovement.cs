@@ -14,11 +14,75 @@ public class PlayerMovement : MonoBehaviour
     public float restartDelay = 1f;
     public bool normal_Mov = true;
     public bool blue_Mov = false;
+    public bool moveLeft;
+    public bool moveRight;
+    
+
+    private void Start()
+    {
+        moveLeft = false;
+        moveRight = false;
+    }
+
+    public void PointerDownLeft() 
+    {
+        moveLeft = true;
+    }
+
+    public void PointerUpLeft() 
+    {
+        moveLeft = false;
+    }
+
+    public void PointerDownRight()
+    {
+        moveRight = true;
+    }
+
+    public void PointerUpRight()
+    {
+        moveRight = false;
+    }
+
+    public void PointerUpJump() 
+    {
+        jump = true;
+    }
+    public void PointerDownJump()
+    {
+        jump = false;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (normal_Mov == true)
+        if (moveLeft)
+        {
+            if (normal_Mov == true)
+            {
+                horizontalMove = -runSpeed;
+                anim.SetBool("Run", true);
+            }
+        }
+        else if (moveRight)
+        {
+            horizontalMove = runSpeed;
+            anim.SetBool("Run", true);
+        }
+
+        else
+        {
+            horizontalMove = 0;
+            anim.SetBool("Run", false);
+        }
+
+        if (jump == true)
+        {
+            anim.SetBool("isJumping", true);
+        }
+    }
+
+        /*if (normal_Mov == true)
         {
             horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
             anim.SetFloat("Run", Mathf.Abs(horizontalMove));
@@ -47,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         horizontalMove = Input.GetAxisRaw("Horizontal-1") * runSpeed;
         anim.SetFloat("Run", Mathf.Abs(horizontalMove));
-    }
+    }*/
 
     public void OnLanding()
     {
