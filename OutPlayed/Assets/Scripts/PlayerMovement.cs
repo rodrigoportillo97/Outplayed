@@ -74,20 +74,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (moveLeft)
         {
-            
-            
-                horizontalMove = -runSpeed;
-                anim.SetBool("Run", true);
-            
+            horizontalMove = -runSpeed;
+            anim.SetBool("Run", true);
         }
         else if (moveRight)
         {
-            
-            
-              horizontalMove = runSpeed;
-                anim.SetBool("Run", true);
-           
-                
+            horizontalMove = runSpeed;
+            anim.SetBool("Run", true);
         }
         else
         {
