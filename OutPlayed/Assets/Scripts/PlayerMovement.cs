@@ -26,22 +26,38 @@ public class PlayerMovement : MonoBehaviour
 
     public void PointerDownLeft() 
     {
-        moveLeft = true;
+        if (blue_Mov == true)
+        {
+            moveRight = true;
+        }
+        else
+        {
+            moveLeft = true;
+        }
     }
 
     public void PointerUpLeft() 
     {
         moveLeft = false;
+        moveRight = false;
     }
 
     public void PointerDownRight()
     {
-        moveRight = true;
+        if (blue_Mov == true)
+        {
+            moveLeft = true;
+        }
+        else
+        {
+            moveRight = true;
+        }
     }
 
     public void PointerUpRight()
     {
         moveRight = false;
+        moveLeft = false;
     }
 
     public void PointerUpJump() 
@@ -58,18 +74,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (moveLeft)
         {
-            if (normal_Mov == true)
-            {
+            
+            
                 horizontalMove = -runSpeed;
                 anim.SetBool("Run", true);
-            }
+            
         }
         else if (moveRight)
         {
-            horizontalMove = runSpeed;
-            anim.SetBool("Run", true);
+            
+            
+              horizontalMove = runSpeed;
+                anim.SetBool("Run", true);
+           
+                
         }
-
         else
         {
             horizontalMove = 0;
@@ -82,36 +101,60 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-        /*if (normal_Mov == true)
-        {
-            horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-            anim.SetFloat("Run", Mathf.Abs(horizontalMove));
-        }
-
-        if (blue_Mov == true)
-        {
-            BlueMov();
-        }
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            jump = true;
-            anim.SetBool("isJumping", true);
-
-        }
-    }
-
-    public void BlueMov()
+    /*public void BlueMovRight() 
     {
-        StartCoroutine(BlueMovCR());
+        StartCoroutine(BlueMoveR());
     }
 
-    IEnumerator BlueMovCR()
+    IEnumerator BlueMoveR() 
     {
         yield return new WaitForSeconds(0.1f);
-        horizontalMove = Input.GetAxisRaw("Horizontal-1") * runSpeed;
-        anim.SetFloat("Run", Mathf.Abs(horizontalMove));
+        horizontalMove = runSpeed;
+        anim.SetBool("Run", true);
+    }
+
+    public void BlueMovLeft()
+    {
+        StartCoroutine(BlueMoveL());
+    }
+
+    IEnumerator BlueMoveL()
+    {
+        yield return new WaitForSeconds(0.1f);
+        horizontalMove = -runSpeed;
+        anim.SetBool("Run", true);
     }*/
+
+    /*if (normal_Mov == true)
+    {
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        anim.SetFloat("Run", Mathf.Abs(horizontalMove));
+    }
+
+    if (blue_Mov == true)
+    {
+        BlueMov();
+    }
+
+    if (Input.GetButtonDown("Jump"))
+    {
+        jump = true;
+        anim.SetBool("isJumping", true);
+
+    }
+}
+
+public void BlueMov()
+{
+    StartCoroutine(BlueMovCR());
+}
+
+IEnumerator BlueMovCR()
+{
+    yield return new WaitForSeconds(0.1f);
+    horizontalMove = Input.GetAxisRaw("Horizontal-1") * runSpeed;
+    anim.SetFloat("Run", Mathf.Abs(horizontalMove));
+}*/
 
     public void OnLanding()
     {
