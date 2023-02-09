@@ -30,7 +30,7 @@ public class CheckPoint : MonoBehaviour
     {
         GameObject savedGame = Instantiate(savedGameAnim);
         savedGame.transform.SetParent(FindObjectOfType<IngameUI>().transform);
-        Destroy(savedGame, 10f);
+        Destroy(savedGame, 5f);
     }
 
 
