@@ -14,60 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public float restartDelay = 1f;
     public bool normal_Mov = true;
     public bool blue_Mov = false;
-    public bool moveLeft;
-    public bool moveRight;
+    public bool moveLeft = false;
+    public bool moveRight = false;
     
-
-    private void Start()
-    {
-        moveLeft = false;
-        moveRight = false;
-    }
-
-    public void PointerDownLeft() 
-    {
-        if (blue_Mov == true)
-        {
-            moveRight = true;
-        }
-        else
-        {
-            moveLeft = true;
-        }
-    }
-
-    public void PointerUpLeft() 
-    {
-        moveLeft = false;
-        moveRight = false;
-    }
-
-    public void PointerDownRight()
-    {
-        if (blue_Mov == true)
-        {
-            moveLeft = true;
-        }
-        else
-        {
-            moveRight = true;
-        }
-    }
-
-    public void PointerUpRight()
-    {
-        moveRight = false;
-        moveLeft = false;
-    }
-
-    public void PointerUpJump() 
-    {
-        jump = false;
-    }
-    public void PointerDownJump()
-    {
-        jump = true;
-    }
 
     // Update is called once per frame
     void Update()
@@ -92,6 +41,32 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("isJumping", true);
         }
+    }
+    public void PointerDownLeft()
+    {
+        moveLeft = true;
+        moveRight = false;
+    }
+
+    public void PointerDownRight()
+    {
+        moveLeft = false;
+        moveRight = true;
+    }
+    
+    public void OnPointerUp()
+    {
+        moveLeft = false;
+        moveRight = false;
+    }
+
+    public void PointerDownJump()
+    {
+        jump = true;
+    }
+    public void PointerUpJump()
+    {
+        jump = false;
     }
 
     /*public void BlueMovRight() 

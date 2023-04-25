@@ -30,10 +30,15 @@ public class Mecanics : MonoBehaviour
 
         if (collision.tag == "Blue")
         {
-            pmov.normal_Mov = false;
-            pmov.blue_Mov = true;
+            if (pmov.moveLeft)
+            {
+                Invoke("InvertControls", 0.1f);
+            }
+            else if (pmov.moveRight)
+            {
+                Invoke("InvertControls", 0.1f);
+            }
         }
-
     }
 
     public void OnTriggerExit2D(Collider2D collision)
@@ -42,11 +47,13 @@ public class Mecanics : MonoBehaviour
         {
             sr.enabled = true;
         }
-
         if (collision.tag == "Blue")
         {
-            pmov.normal_Mov = true;
-            pmov.blue_Mov = false;
+            if (pmov.moveRight)
+            {
+                pmov.moveLeft = true;
+            }
+            pmov.moveRight = true;
         }
     }
 
@@ -64,6 +71,21 @@ public class Mecanics : MonoBehaviour
             rb.AddForce(m_NewForce, ForceMode2D.Impulse);
         }
 
+    }
+
+    private void InvertControls() 
+    {
+        if (pmov.moveLeft)
+        {
+            pmov.moveLeft = false;
+            pmov.moveRight = true;
+        }
+
+        else if (pmov.moveRight)
+        {
+            pmov.moveLeft = true;
+            pmov.moveRight = false;
+        }
     }
 }
 
