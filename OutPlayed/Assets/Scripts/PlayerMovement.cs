@@ -12,23 +12,55 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 40f;
     bool jump = false;
     public float restartDelay = 1f;
-    public bool normal_Mov = true;
-    public bool blue_Mov = false;
     public bool moveLeft = false;
     public bool moveRight = false;
+    public bool blueMov = false;
     
 
     // Update is called once per frame
     void Update()
     {
+        if (!blueMov)
+        {
+            if (moveLeft)
+            {
+                horizontalMove = -runSpeed;
+                anim.SetBool("Run", true);
+            }
+            else if (moveRight)
+            {
+                horizontalMove = runSpeed;
+                anim.SetBool("Run", true);
+            }
+            else
+            {
+                horizontalMove = 0;
+                anim.SetBool("Run", false);
+            }
+        }
+        else if (blueMov)
+        {
+            StartCoroutine(DelayDirectionChange());
+        }
+
+        if (jump == true)
+        {
+            anim.SetBool("isJumping", true);
+        }
+
+    }
+
+    IEnumerator DelayDirectionChange () 
+    {
+        yield return new WaitForSeconds(0.1f);
         if (moveLeft)
         {
-            horizontalMove = -runSpeed;
+            horizontalMove = runSpeed;
             anim.SetBool("Run", true);
         }
         else if (moveRight)
         {
-            horizontalMove = runSpeed;
+            horizontalMove = -runSpeed;
             anim.SetBool("Run", true);
         }
         else
@@ -36,21 +68,14 @@ public class PlayerMovement : MonoBehaviour
             horizontalMove = 0;
             anim.SetBool("Run", false);
         }
-
-        if (jump == true)
-        {
-            anim.SetBool("isJumping", true);
-        }
     }
     public void PointerDownLeft()
     {
         moveLeft = true;
-        moveRight = false;
     }
 
     public void PointerDownRight()
     {
-        moveLeft = false;
         moveRight = true;
     }
     
@@ -66,6 +91,18 @@ public class PlayerMovement : MonoBehaviour
     }
     public void PointerUpJump()
     {
+        jump = false;
+    }
+
+    
+    public void OnLanding()
+    {
+        anim.SetBool("isJumping", false);
+    }
+
+    void FixedUpdate()
+    {
+        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
     }
 
@@ -124,15 +161,4 @@ IEnumerator BlueMovCR()
     anim.SetFloat("Run", Mathf.Abs(horizontalMove));
 }*/
 
-    public void OnLanding()
-    {
-        anim.SetBool("isJumping", false);
-    }
-
-    void FixedUpdate()
-    {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
-        jump = false;
-    }
-
-} 
+}

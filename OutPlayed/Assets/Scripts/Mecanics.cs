@@ -9,7 +9,10 @@ public class Mecanics : MonoBehaviour
     public Vector2 m_NewForce;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer sr;
-   
+    [SerializeField] private bool blueAreaEntered = false;
+    [SerializeField] private bool blueAreaExited = false;
+    private bool hasDetectedColl;
+
     private void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
@@ -28,16 +31,10 @@ public class Mecanics : MonoBehaviour
             sr.enabled = false;
         }
 
-        if (collision.tag == "Blue")
+        if (collision.tag == "Blue" && hasDetectedColl == false)
         {
-            if (pmov.moveLeft)
-            {
-                Invoke("InvertControls", 0.1f);
-            }
-            else if (pmov.moveRight)
-            {
-                Invoke("InvertControls", 0.1f);
-            }
+            pmov.blueMov = true;
+            hasDetectedColl = true;
         }
     }
 
@@ -47,17 +44,16 @@ public class Mecanics : MonoBehaviour
         {
             sr.enabled = true;
         }
+
         if (collision.tag == "Blue")
         {
-            if (pmov.moveRight)
-            {
-                pmov.moveLeft = true;
-            }
-            pmov.moveRight = true;
+            pmov.blueMov = false;
+            hasDetectedColl = false;
         }
+
     }
 
-    public void OnTriggerStay2D(Collider2D coll)
+        public void OnTriggerStay2D(Collider2D coll)
     {
         if (coll.tag == "Red")
         {
@@ -71,21 +67,8 @@ public class Mecanics : MonoBehaviour
             rb.AddForce(m_NewForce, ForceMode2D.Impulse);
         }
 
+        
     }
-
-    private void InvertControls() 
-    {
-        if (pmov.moveLeft)
-        {
-            pmov.moveLeft = false;
-            pmov.moveRight = true;
-        }
-
-        else if (pmov.moveRight)
-        {
-            pmov.moveLeft = true;
-            pmov.moveRight = false;
-        }
-    }
+   
 }
 
