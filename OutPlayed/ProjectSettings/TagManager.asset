@@ -15,6 +15,9 @@ TagManager:
   - deadPoint
   - Yellow
   - Floorlimit
+  - snapPosition1
+  - snapPosition2
+  - snapPosition3
   layers:
   - Default
   - TransparentFX

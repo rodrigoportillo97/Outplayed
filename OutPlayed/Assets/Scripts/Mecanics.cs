@@ -9,8 +9,6 @@ public class Mecanics : MonoBehaviour
     public Vector2 m_NewForce;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private bool blueAreaEntered = false;
-    [SerializeField] private bool blueAreaExited = false;
     private bool hasDetectedColl;
 
     private void Start()
