@@ -6,7 +6,7 @@ public class WaypointFollower : MonoBehaviour
 {
     public GameObject[] waypoints;
     private int currentWaypoint;
-    private float speed = 2f;
+    public float speed = 2f;
 
     private void Update()
     {
