@@ -4853,6 +4853,7 @@ GameObject:
   - component: {fileID: 602243390}
   - component: {fileID: 602243391}
   - component: {fileID: 602243389}
+  - component: {fileID: 602243386}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -5027,8 +5028,9 @@ MonoBehaviour:
   fader: {fileID: 0}
   runSpeed: 25
   restartDelay: 1
-  normal_Mov: 1
-  blue_Mov: 0
+  moveLeft: 0
+  moveRight: 0
+  blueMov: 0
 --- !u!114 &1449846501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5202,6 +5204,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &602243386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611531041199476754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d43f80638ce4140a192825cfb36a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineVC: {fileID: 0}
+  cameraFramingTransposer: {fileID: 0}
 --- !u!1 &1048188741696238175
 GameObject:
   m_ObjectHideFlags: 0
