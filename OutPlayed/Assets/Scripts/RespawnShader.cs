@@ -7,7 +7,8 @@ public class RespawnShader : MonoBehaviour
     Material material;
 
     bool isRespawning = false;
-    float fade = 1f;
+    [Range(0f,1f)]
+    public float fade = 0f;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class RespawnShader : MonoBehaviour
 
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isRespawning = true;
@@ -23,18 +25,17 @@ public class RespawnShader : MonoBehaviour
 
         if (isRespawning)
         {
-            fade -= Time.deltaTime;
+            fade += Time.deltaTime;
 
             if (fade <= 0f)
             {
-                fade = 0f;
+                fade = 1f;
                 isRespawning = false;
             }
 
             material.SetFloat("_Fade", fade);
         }
     }
-
 
 
 }
