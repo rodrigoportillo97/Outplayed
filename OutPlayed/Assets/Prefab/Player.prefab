@@ -4854,6 +4854,7 @@ GameObject:
   - component: {fileID: 602243391}
   - component: {fileID: 602243389}
   - component: {fileID: 602243386}
+  - component: {fileID: 602243393}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -4897,7 +4898,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6782bf3750cb12147a00977acce57244, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5218,6 +5219,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cinemachineVC: {fileID: 0}
   cameraFramingTransposer: {fileID: 0}
+--- !u!114 &602243393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611531041199476754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cee310dbde037744af32cda778ea189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fade: 0
 --- !u!1 &1048188741696238175
 GameObject:
   m_ObjectHideFlags: 0
