@@ -80,6 +80,23 @@ public class SaveData : MonoBehaviour
         }
     }
 
+    public void SetShader(string key, float value)
+    {
+        PlayerPrefs.SetFloat($"{key}", value);
+    }
+
+    public float GetShader(string key, float value)
+    {
+        if (PlayerPrefs.HasKey($"{key}"))
+        {
+            return PlayerPrefs.GetFloat($"{key}", value);
+        }
+        else
+        {
+            return value;
+        }
+    }
+
     public void Save()
     {
         PlayerPrefs.Save();

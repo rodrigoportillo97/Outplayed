@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RespawnShader : MonoBehaviour
 {
     Material material;
 
     bool isRespawning = false;
-    [Range(0f,1f)]
     public float fade = 0f;
 
     private void Start()
@@ -15,13 +15,14 @@ public class RespawnShader : MonoBehaviour
         material = GetComponent<SpriteRenderer>().material;
     }
 
+    public void Respawning () 
+    {
+        fade = SaveData.Instance.GetShader("Shade", fade);
+        isRespawning = true;
+    }
+
     private void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isRespawning = true;
-        }
 
         if (isRespawning)
         {

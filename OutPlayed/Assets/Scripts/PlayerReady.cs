@@ -8,6 +8,8 @@ public class PlayerReady : MonoBehaviour
     public GameObject ingameUI;
     public GameObject touchCanvas;
     public GameObject ingameText;
+    public Button rdyButton;
+    public GameObject buttonEffect;
 
 
     public void Start()
@@ -15,23 +17,25 @@ public class PlayerReady : MonoBehaviour
         if (PlayerPrefs.HasKey($"Player_x"))
         {
             touchCanvas.SetActive(true);
-            gameObject.SetActive(false);
             ingameUI.SetActive(true);
             ingameText.SetActive(true);
+            rdyButton.gameObject.SetActive(false);
         }
         else
         {
             touchCanvas.SetActive(false);
-            gameObject.SetActive(true);
             ingameUI.SetActive(false);
             ingameText.SetActive(false);
+            rdyButton.gameObject.SetActive(true);
+
         }
     }
 
     public void ReadyButton() 
     {
+        Instantiate(buttonEffect);
         ActivateUIElements();
-        gameObject.SetActive(false);
+        rdyButton.gameObject.SetActive(false);
     }
 
     public void ActivateUIElements() 
@@ -41,7 +45,7 @@ public class PlayerReady : MonoBehaviour
 
     IEnumerator ActivarUIElementsCR() 
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.8f);
         touchCanvas.SetActive(true);
         ingameUI.SetActive(true);
         ingameText.SetActive(true);
