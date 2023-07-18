@@ -37,7 +37,7 @@ public class MainMenu : MonoBehaviour
 
     public void ContinueGameWhenActive() 
     {
-        fader.FadeTo();
+        fader.FadeTo2();
     }
 
     public void QuitGame() 

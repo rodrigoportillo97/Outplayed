@@ -58,4 +58,21 @@ public class SceneFader : MonoBehaviour
         SceneManager.LoadScene(levelIndex);
     }
 
+    public void FadeTo2()
+    {
+        LoadNextLevel2();
+    }
+
+    public void LoadNextLevel2()
+    {
+        StartCoroutine(LoadLevel2(SceneManager.GetActiveScene().buildIndex + 2));
+    }
+
+    IEnumerator LoadLevel2(int levelIndex)
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(levelIndex);
+    }
+
 }
