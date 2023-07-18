@@ -8,21 +8,25 @@ public class RespawnShader : MonoBehaviour
     Material material;
 
     bool isRespawning = false;
-    public float fade = 0f;
+    public float fade;
 
     private void Start()
     {
         material = GetComponent<SpriteRenderer>().material;
     }
 
+
     public void Respawning () 
     {
-        fade = SaveData.Instance.GetShader("Shade", fade);
         isRespawning = true;
     }
 
     private void Update()
     {
+        if (PlayerPrefs.HasKey($"Player_x"))
+        {
+            Respawning();
+        }
 
         if (isRespawning)
         {

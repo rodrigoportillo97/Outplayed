@@ -63,7 +63,6 @@ public class PlayerManagement : MonoBehaviour
             SaveData.Instance.SetPosition("Player", transform.position);
             SaveData.Instance.SetDeaths("Death", deathcount);
             SaveData.Instance.SetTimer("Timer", ui.time);
-            SaveData.Instance.SetShader("Shade", shader.fade);
             SaveData.Instance.Save();
             respawnPoint = transform.position;
             hasDetectedTrigger = true;
