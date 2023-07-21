@@ -9,7 +9,7 @@ public class PlayerReady : MonoBehaviour
     public GameObject touchCanvas;
     public GameObject ingameText;
     public Button rdyButton;
-    public GameObject buttonEffect;
+   
 
 
     public void Start()
@@ -33,7 +33,6 @@ public class PlayerReady : MonoBehaviour
 
     public void ReadyButton() 
     {
-        Instantiate(buttonEffect);
         ActivateUIElements();
         rdyButton.gameObject.SetActive(false);
     }
