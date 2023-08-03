@@ -15,6 +15,8 @@ public class IngameUI : MonoBehaviour
     public PlayerManagement loadcheckpoint;
     public int min, seg;
     public GameObject deleteKeyButton;
+    public Animator anim;
+
 
     void Start()
     {
@@ -27,7 +29,7 @@ public class IngameUI : MonoBehaviour
             deleteKeyButton.SetActive(true);
         }
     }
-
+   
     void Update()
     {
         if (!timerfinish)
@@ -49,6 +51,7 @@ public class IngameUI : MonoBehaviour
         
     }
 
+
     public void TimeCalculate()
     {
         time += Time.deltaTime;
@@ -61,7 +64,8 @@ public class IngameUI : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        anim.SetBool("isClosed", true);
+        PauseMenuClosed();
         Time.timeScale = 1f;
         GamePaused = false;
     }
@@ -93,6 +97,17 @@ public class IngameUI : MonoBehaviour
     {
         Debug.Log("Quitting...");
         Application.Quit();
+    }
+    
+    public void PauseMenuClosed() 
+    {
+        StartCoroutine(PauseMenuClosedIE());
+    }
+
+    IEnumerator PauseMenuClosedIE() 
+    {
+        yield return new WaitForSeconds(1);
+        pauseMenuUI.SetActive(false);
     }
 
 
