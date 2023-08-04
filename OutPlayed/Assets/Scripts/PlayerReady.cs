@@ -34,7 +34,7 @@ public class PlayerReady : MonoBehaviour
 
     public void ReadyButton() 
     {
-        StartCoroutine(ChangeSaturationOverTime(2.5f, -100f, 0f));
+        StartCoroutine(ChangeSaturationOverTime(1.7f, -100f, 0f));
         ActivateUIElements();
         rdyButton.gameObject.SetActive(false);
     }
@@ -61,7 +61,7 @@ public class PlayerReady : MonoBehaviour
 
     IEnumerator ActivarUIElementsCR() 
     {
-        yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSeconds(3.5f);
         levelSound.Play();
         touchCanvas.SetActive(true);
         ingameUI.SetActive(true);

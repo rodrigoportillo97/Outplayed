@@ -18,6 +18,12 @@ public class RespawnShader : MonoBehaviour
 
     public void Respawning () 
     {
+        StartCoroutine(RespawningDelay());
+    }
+
+    IEnumerator RespawningDelay() 
+    {
+        yield return new WaitForSeconds(2f);
         isRespawning = true;
     }
 
