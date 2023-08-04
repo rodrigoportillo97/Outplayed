@@ -9,8 +9,9 @@ public class PlayerReady : MonoBehaviour
     public GameObject touchCanvas;
     public GameObject ingameText;
     public Button rdyButton;
+    public Saturation sat;
+    public AudioSource levelSound;
    
-
 
     public void Start()
     {
@@ -33,8 +34,24 @@ public class PlayerReady : MonoBehaviour
 
     public void ReadyButton() 
     {
+        StartCoroutine(ChangeSaturationOverTime(2.5f, -100f, 0f));
         ActivateUIElements();
         rdyButton.gameObject.SetActive(false);
+    }
+
+    IEnumerator ChangeSaturationOverTime(float duration, float startValue, float targetValue)
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            float t = elapsedTime / duration;
+            float currentSaturation = Mathf.Lerp(startValue, targetValue, t);
+            sat.colorAdjustments.saturation.value = currentSaturation;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        sat.colorAdjustments.saturation.value = targetValue; 
     }
 
     public void ActivateUIElements() 
@@ -44,10 +61,12 @@ public class PlayerReady : MonoBehaviour
 
     IEnumerator ActivarUIElementsCR() 
     {
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(2.2f);
+        levelSound.Play();
         touchCanvas.SetActive(true);
         ingameUI.SetActive(true);
         ingameText.SetActive(true);
+
     }
 
 }

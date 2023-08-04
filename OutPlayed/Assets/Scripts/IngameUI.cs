@@ -16,6 +16,7 @@ public class IngameUI : MonoBehaviour
     public int min, seg;
     public GameObject deleteKeyButton;
     public Animator anim;
+    
 
 
     void Start()
@@ -28,6 +29,7 @@ public class IngameUI : MonoBehaviour
         {
             deleteKeyButton.SetActive(true);
         }
+
     }
    
     void Update()
