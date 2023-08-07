@@ -18,7 +18,15 @@ public class RespawnShader : MonoBehaviour
 
     public void Respawning () 
     {
-        StartCoroutine(RespawningDelay());
+        if (PlayerPrefs.HasKey($"Player_x"))
+        {
+            isRespawning = true;
+        }
+        else
+        {
+            StartCoroutine(RespawningDelay());
+        }
+        
     }
 
     IEnumerator RespawningDelay() 

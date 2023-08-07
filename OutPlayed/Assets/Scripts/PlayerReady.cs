@@ -21,6 +21,7 @@ public class PlayerReady : MonoBehaviour
             ingameUI.SetActive(true);
             ingameText.SetActive(true);
             rdyButton.gameObject.SetActive(false);
+            levelSound.Play();
         }
         else
         {

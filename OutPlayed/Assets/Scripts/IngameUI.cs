@@ -82,7 +82,7 @@ public class IngameUI : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        fader.FadeBack();
+        fader.FadeBack2();
     }
     
     public void ReloadwhenStuck() 
